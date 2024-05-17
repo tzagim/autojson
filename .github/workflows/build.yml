@@ -33,7 +33,7 @@ jobs:
             echo "custom.pif.json is the same, no need to commit."
           else
             echo "value=build" >> "$GITHUB_OUTPUT"
-            echo "NOW=$(date +'%Y.%m.%d-%H')" >> $GITHUB_ENV
+            echo "NOW=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
             cat custom.pif.json
             git config --global user.name "tzagim"
             git config --global user.email "username@users.noreply.github.com"

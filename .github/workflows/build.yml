@@ -31,7 +31,6 @@ jobs:
         run: |
           if git diff --exit-code custom.pif.json; then
             echo "custom.pif.json is the same, no need to commit."
-            echo "NOW=$(date +'%Y.%m.%d-%H')" >> $GITHUB_ENV
           else
             echo "value=build" >> "$GITHUB_OUTPUT"
             echo "NOW=$(date +'%Y.%m.%d-%H')" >> $GITHUB_ENV
@@ -45,7 +44,7 @@ jobs:
    
       - name: 🔖 Create Github Release
         uses: softprops/action-gh-release@v2
-#        if: steps.differencescheck.outputs.value == 'build'
+        if: steps.differencescheck.outputs.value == 'build'
         with:
           tag_name: ${{ env.NOW }}
           files: custom.pif.json

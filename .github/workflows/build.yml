@@ -14,23 +14,26 @@ jobs:
     outputs:
       start_relase: ${{ steps.differencescheck.outputs.value }}
     steps:
-      - name: 🔃 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: ⚙️ Install apktool
+      - name: Install apktool
         run: sudo apt-get install -y apktool
       
-      - name: ⚙️ Grant execute permission for script
+      - name: Grant execute permission for script
         run: chmod +x pif.sh
 
-      - name: ⚙️ Generate JSON file
+      - name: Generate JSON file
         run: ./pif.sh
 
-      - name: 🔃 Check differences in custom.pif.json
+      - name: Check differences in custom.pif.json
         id: differencescheck
         run: |
           if git diff --exit-code custom.pif.json; then
             echo "custom.pif.json is the same, no need to commit."
+          elif
+            git diff | grep  -P '.*MANUFACTURER.*null.*'; then
+            echo "Something is wrong with the new custom.pif.json, not commit."
           else
             echo "value=build" >> "$GITHUB_OUTPUT"
             echo "NOW=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
@@ -49,8 +52,9 @@ jobs:
           tag_name: ${{ env.NOW }}
           files: custom.pif.json
 
-#      - name: Upload artifact
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: custom.pif.json
-#          path: custom.pif.json
+      - name: 🔖 Upload artifact
+        uses: actions/upload-artifact@v4
+        if: steps.differencescheck.outputs.value == 'build'
+        with:
+          name: custom.pif.json
+          path: custom.pif.json

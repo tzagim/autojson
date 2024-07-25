@@ -58,3 +58,9 @@ jobs:
         with:
           name: custom.pif.json
           path: custom.pif.json
+
+      - name: Prevent workflow deactivation
+        uses: gautamkrishnar/keepalive-workflow@v2
+        with:
+          committer_username: "tzagim"
+          committer_email: "username@users.noreply.github.com"

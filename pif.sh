@@ -16,7 +16,7 @@ create_json() {
   "MODEL": "$(get_value MODEL)",
   "FINGERPRINT": "$(get_value FINGERPRINT)",
   "SECURITY_PATCH": "$(get_value SECURITY_PATCH)",
-  "FIRST_API_LEVEL": "$(get_value FIRST_API_LEVEL)"
+  "DEVICE_INITIAL_SDK_INT": "$(get_value FIRST_API_LEVEL)"
 }
 EOF
 }

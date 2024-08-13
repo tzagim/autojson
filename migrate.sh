@@ -150,11 +150,11 @@ echo '    "*.build.id": "'$ID'",';
 echo '    "*.security_patch": "'$SECURITY_PATCH'",';
 [ -z "$VNDK_VERSION" ] || echo '    "*.vndk.version": "'$VNDK_VERSION'",';
 echo '    "*api_level": "'$DEVICE_INITIAL_SDK_INT'",';
-if [ "$ADVANCED" ]; then
-  echo "$N  // Advanced Settings";
-  for SETTING in $ADVSETTINGS; do
-    eval echo '\ \ \ \ \"$SETTING\": \"'\$$SETTING'\",';
-  done;
-fi) | sed '$s/,/\n}/' > "$OUT";
+
+## Enable advanced settings by default
+echo "$N  // Advanced Settings";
+for SETTING in $ADVSETTINGS; do
+  eval echo '\ \ \ \ \"$SETTING\": \"'\$$SETTING'\",';
+done;) | sed '$s/,/\n}/' > "$OUT";
 
 [ "$INSTALL" ] || cat "$OUT";

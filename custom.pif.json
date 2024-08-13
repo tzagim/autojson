@@ -17,5 +17,12 @@
   // System Properties
     "*.build.id": "OPM1.171019.011",
     "*.security_patch": "2017-12-05",
-    "*api_level": "25"
+    "*api_level": "25",
+
+  // Advanced Settings
+    "spoofBuild": "1",
+    "spoofProps": "1",
+    "spoofProvider": "1",
+    "spoofSignature": "0",
+    "verboseLogs": "0"
 }

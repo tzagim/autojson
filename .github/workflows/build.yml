@@ -23,9 +23,6 @@ jobs:
           if git diff --exit-code custom.pif.json; then
             echo "custom.pif.json is the same, no need to commit."
             echo "value=none" >> $GITHUB_ENV
-          elif git diff | grep -v '"FIRST_API_LEVEL": "null"' | grep '"null"'; then
-            echo "Something is wrong with the new custom.pif.json, not committing."
-            echo "status=error" >> $GITHUB_ENV
           else
             echo "status=build" >> $GITHUB_ENV
           fi

@@ -1,1 +1,1 @@
-Forked from [daboynb/autojson](https://github.com/daboynb/autojson)
+Based on [daboynb/autojson](https://github.com/daboynb/autojson)

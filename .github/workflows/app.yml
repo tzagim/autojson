@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: upgrade pip
+      - name: Upgrade pip
         run: pip install --upgrade pip
 
       - name: Install dependencies
@@ -28,13 +28,19 @@ jobs:
         id: run_script
         run: |
           output=$(python app_ver.py)
-          echo "$output" >> $GITHUB_ENV
+          echo "app=$output" >> $GITHUB_ENV
+
+      - name: Ensure app_ver.txt exists
+        run: |
+          if [ ! -f app_ver.txt ]; then
+            echo "Creating app_ver.txt"
+            touch app_ver.txt
+          fi
 
       - name: Update app_var.txt file
         if: env.app != 'No update needed'
         run: |
             echo "status=run" >> $GITHUB_ENV
-            cat app_ver.txt
             git config --global user.name "tzagim"
             git config --global user.email "username@users.noreply.github.com"
             git add app_ver.txt

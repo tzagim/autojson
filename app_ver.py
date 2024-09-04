@@ -51,9 +51,9 @@ current_date_str = read_current_date('app_ver.txt')
 if current_date_str:
     if new_date_str != current_date_str:
         write_new_date('app_ver.txt', new_date_str)
-        print(f"app=Updated app_ver.txt to '{new_date_str}'")
+        print(f"Updated app_ver.txt to '{new_date_str}'")
     else:
-        print('app=No update needed')
+        print('No update needed')
 else:
     # If app_ver.txt does not exist, create it with the new date
     write_new_date('app_ver.txt', new_date_str)

@@ -42,7 +42,7 @@ jobs:
         run: |
             echo "status=run" >> $GITHUB_ENV
             git config --global user.name "tzagim"
-            git config --global user.email "username@users.noreply.github.com"
+            git config --global user.email "tzagim@users.noreply.github.com"
             git add app_ver.txt
             git commit -m "Update version"
             git push
@@ -64,4 +64,4 @@ jobs:
         uses: gautamkrishnar/keepalive-workflow@v2
         with:
           committer_username: "tzagim"
-          committer_email: "username@users.noreply.github.com"
+          committer_email: "tzagim@users.noreply.github.com"

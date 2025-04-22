@@ -4,7 +4,7 @@ name: "Keep Actions alive"
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Build pif"]
+    workflows: ["Check version"]
     types:
       - completed
 

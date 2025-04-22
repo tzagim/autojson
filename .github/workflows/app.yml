@@ -59,9 +59,3 @@ jobs:
               workflow_id: 'build.yml',
               ref: 'main',
             })
-
-      - name: Prevent workflow deactivation
-        uses: gautamkrishnar/keepalive-workflow@v2
-        with:
-          committer_username: "tzagim"
-          committer_email: "tzagim@users.noreply.github.com"

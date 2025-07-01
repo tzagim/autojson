@@ -3,10 +3,12 @@ name: "Keep Actions alive"
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Check version"]
-    types:
-      - completed
+  schedule:
+  - cron: '0 0 */3 * *'
+#  workflow_run:
+#    workflows: ["Check version"]
+#    types:
+#      - completed
 
 jobs:
   keepalive:

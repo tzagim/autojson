@@ -3,8 +3,10 @@ name: Check version
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '.github/**'
+
   schedule:
-    #- cron: "0 */2 * * *" Every 2 hours
     - cron: "0 7 * * *" # Once a day at 7 AM
 
 jobs:

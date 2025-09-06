@@ -52,7 +52,7 @@ jobs:
 
       - name: Trigger build Workflow
         if: env.status == 'run'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           retries: 3
           script: |
